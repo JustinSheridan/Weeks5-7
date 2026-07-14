@@ -20,8 +20,8 @@ public class DamageHazard : MonoBehaviour
     {
         if (PlayerRenderer.bounds.Contains(transform.position)&&!isCurrentlyOnTrap)
         {
-            playerExplorer.health -= 1;
             isCurrentlyOnTrap = true;
+            playerExplorer.health -= 1;
         }
         if (!PlayerRenderer.bounds.Contains(transform.position)&&isCurrentlyOnTrap)
         {
