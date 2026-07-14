@@ -17,16 +17,16 @@ public class ProximityHazard : MonoBehaviour
     
     public UnityEvent onProxyEntered;
     public UnityEvent onProxyExited;
+
     
     [Header("Proximity Settings")]
     public float proximityRadius = 2f;
     
-    private bool isCurrentlyInProximity = false; // Renamed from inProxy for clarity
+    private bool isCurrentlyInProximity = false; 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -65,5 +65,9 @@ public class ProximityHazard : MonoBehaviour
                 Debug.Log("Proximity exited");
             }
         }
+
+        // New check incrementally checking if player renderer is present
     }
+
+   
 }

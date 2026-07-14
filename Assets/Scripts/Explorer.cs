@@ -7,6 +7,12 @@ public class Explorer : MonoBehaviour
     public float speed;
     public int treasure;
 
+    [Header("Thorns Settings")]
+    public float thornsDamageCooldown = 1f;
+    
+    private bool isThornsActive = false;
+    private float thornsTimer = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +45,32 @@ public class Explorer : MonoBehaviour
             directionToMove.y -= 1f;
         }
 
+        // Handle Thorns Damage based on boolean state
+        if (isThornsActive)
+        {
+            thornsTimer += Time.deltaTime;
+            if (thornsTimer >= thornsDamageCooldown)
+            {
+                ThornsDamage();
+                thornsTimer = 0f;
+            }
+        }
+
         transform.position += directionToMove * speed * Time.deltaTime;
+    }
+
+    public void SetThornsActive(bool active)
+    {
+        isThornsActive = active;
+        if (!active)
+        {
+            thornsTimer = 0f;
+        }
+    }
+
+    public void ThornsDamage()
+    {
+        health -= 1;
     }
 
     public void TakeDamage()
