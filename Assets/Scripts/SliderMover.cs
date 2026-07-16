@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class SliderMover : MonoBehaviour
 {
-    [Header("References")]
     public SliderInput sliderInput;
-
-    [Header("Movement Settings (2D)")]
     public Vector3 sliderAxis = Vector3.up; 
     public float minPosition = -5f; 
     public float maxPosition = 5f;
